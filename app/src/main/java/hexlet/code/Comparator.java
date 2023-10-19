@@ -15,14 +15,14 @@ public class Comparator {
 
         for (String key : keys) {
             if (!mapOne.containsKey(key)) {
-                resultMap.put("+ " + key, mapTwo.get(key).toString());
+                resultMap.put(" + " + key, mapTwo.get(key).toString());
             } else if (!mapTwo.containsKey(key)) {
-                resultMap.put("- " + key, mapOne.get(key).toString());
+                resultMap.put(" - " + key, mapOne.get(key).toString());
             } else if (Objects.equals(mapOne.get(key), mapTwo.get(key))) {
-                resultMap.put("  " + key, mapOne.get(key).toString());
+                resultMap.put("   " + key, mapOne.get(key).toString());
             } else if (!Objects.equals(mapOne.get(key), mapTwo.get(key))) {
-                resultMap.put("- " + key, mapOne.get(key).toString());
-                resultMap.put("+ " + key, mapTwo.get(key).toString());
+                resultMap.put(" - " + key, mapOne.get(key).toString());
+                resultMap.put(" + " + key, mapTwo.get(key).toString());
             }
         }
 

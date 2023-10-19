@@ -33,7 +33,7 @@ public class Differ {
         return resultString.toString();
     }
 
-    public static Path makePath(String pathString) throws Exception{
+    public static Path makePath(String pathString) throws Exception {
         return Paths.get(pathString).toAbsolutePath().normalize();
     }
 }

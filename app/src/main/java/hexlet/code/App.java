@@ -33,7 +33,7 @@ public class App implements Callable<Integer> {
             names = {"-f", "--format"},
             defaultValue = "stylish",
             paramLabel = "format",
-            description = "output format [default: ${DEFAULT-VALUE}]"
+            description = "output format [default: stylish]"
     )
     private String format;
 
