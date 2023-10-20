@@ -12,7 +12,6 @@ report:
 	./gradlew jacocoTestReport
 
 build:
-	./gradlew clean build
+	./gradlew build
 
-.PHONY:
-	build
+.PHONY:	build

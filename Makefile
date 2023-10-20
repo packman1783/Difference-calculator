@@ -13,5 +13,4 @@ report:
 build:
 	make -C app build
 
-.PHONY:
-	build
+.PHONY:	build
