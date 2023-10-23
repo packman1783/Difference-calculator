@@ -8,14 +8,17 @@ import java.util.Map;
 public class Differ {
 
     public static String generate(String filePathOne, String filePathTwo) throws Exception {
-        Path firstFilePath = makePath(filePathOne);
-        Path secondFilePath = makePath(filePathTwo);
+        String formatFile1 = getFormat(filePathOne);
+        String formatFile2 = getFormat(filePathTwo);
+
+        Path firstFilePath = getPath(filePathOne);
+        Path secondFilePath = getPath(filePathTwo);
 
         String contentFileOne = Files.readString(firstFilePath);
         String contentFileTwo = Files.readString(secondFilePath);
 
-        Map<String, Object> fileMapOne = Parser.parse(contentFileOne);
-        Map<String, Object> fileMapTwo = Parser.parse(contentFileTwo);
+        Map<String, Object> fileMapOne = Parser.parseToMap(contentFileOne, formatFile1);
+        Map<String, Object> fileMapTwo = Parser.parseToMap(contentFileTwo, formatFile2);
 
         Map<String, String> resultStringMap = Comparator.getDifference(fileMapOne, fileMapTwo);
 
@@ -33,7 +36,17 @@ public class Differ {
         return resultString.toString();
     }
 
-    public static Path makePath(String pathString) throws Exception {
-        return Paths.get(pathString).toAbsolutePath().normalize();
+    public static Path getPath(String filePath) throws Exception {
+        return Paths.get(filePath).toAbsolutePath().normalize();
+    }
+
+    public static String getFormat(String filePath) throws Exception {
+        if (filePath.endsWith(".json")) {
+            return "json";
+        } else if (filePath.endsWith(".yml")) {
+            return "yml";
+        } else {
+            throw new Exception("File format" + filePath + "not supported");
+        }
     }
 }
