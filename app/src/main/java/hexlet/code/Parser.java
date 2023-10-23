@@ -12,12 +12,12 @@ public class Parser {
         switch (fileFormat) {
             case "json" -> {
                 ObjectMapper mapper = new ObjectMapper();
-                return mapper.readValue(contentFile, new TypeReference<Map<String, Object>>() { });
+                return mapper.readValue(contentFile, new TypeReference<>() { });
             }
 
             case "yml" -> {
                 ObjectMapper mapper = new YAMLMapper();
-                return mapper.readValue(contentFile, new TypeReference<Map<String, Object>>() { });
+                return mapper.readValue(contentFile, new TypeReference<>() { });
             }
             default -> throw new Exception("Unexpected format: " + fileFormat);
         }
