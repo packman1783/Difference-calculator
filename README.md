@@ -3,5 +3,8 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/a74e4cd2fc529f000cf5/maintainability)](https://codeclimate.com/github/packman1783/java-project-71/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/a74e4cd2fc529f000cf5/test_coverage)](https://codeclimate.com/github/packman1783/java-project-71/test_coverage)
 
-** Asciinema simple comparing .json files **
+**Asciinema simple comparing .json files**
 [![asciicast](https://asciinema.org/a/614631.svg)](https://asciinema.org/a/614631)
+
+**Asciinema simple comparing .yml files**
+[![asciicast](https://asciinema.org/a/616643.svg)](https://asciinema.org/a/616643)
