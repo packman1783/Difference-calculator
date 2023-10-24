@@ -1,31 +1,35 @@
 package hexlet.code;
 
-import java.util.Map;
-import java.util.LinkedHashMap;
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.Objects;
+import java.util.*;
 
 public class Comparator {
-    public static Map<String, String> getDifference(Map<String, Object> mapOne, Map<String, Object> mapTwo) {
-        Map<String, String> resultMap = new LinkedHashMap<>();
+    public static List<Map<String, Object>> getDifference(Map<String, Object> mapOne, Map<String, Object> mapTwo) {
+        List<Map<String, Object>> diffList = new LinkedList<>();
 
         Set<String> keys = new TreeSet<>(mapOne.keySet());
         keys.addAll(mapTwo.keySet());
 
         for (String key : keys) {
-            if (!mapOne.containsKey(key)) {
-                resultMap.put(" + " + key, mapTwo.get(key).toString());
-            } else if (!mapTwo.containsKey(key)) {
-                resultMap.put(" - " + key, mapOne.get(key).toString());
-            } else if (Objects.equals(mapOne.get(key), mapTwo.get(key))) {
-                resultMap.put("   " + key, mapOne.get(key).toString());
+            Map<String, Object> innerMap = new HashMap<>();
+                innerMap.put("key", key);
+            if (!mapTwo.containsKey(key)) {
+                innerMap.put("mapOneValue", mapOne.get(key));
+                innerMap.put("status", "deleted");
+            } else if (!mapOne.containsKey(key)) {
+                innerMap.put("mapTwoValue", mapTwo.get(key));
+                innerMap.put("status", "added");
             } else if (!Objects.equals(mapOne.get(key), mapTwo.get(key))) {
-                resultMap.put(" - " + key, mapOne.get(key).toString());
-                resultMap.put(" + " + key, mapTwo.get(key).toString());
+                innerMap.put("mapOneValue", mapOne.get(key));
+                innerMap.put("mapTwoValue", mapTwo.get(key));
+                innerMap.put("status", "changed");
+            } else {
+                innerMap.put("mapOneValue", mapOne.get(key));
+                innerMap.put("status", "unchanged");
             }
+
+            diffList.add(innerMap);
         }
 
-        return resultMap;
+        return diffList;
     }
 }
