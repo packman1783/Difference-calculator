@@ -1,8 +1,11 @@
 package hexlet.code;
 
+import hexlet.code.format.Formatter;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.Map;
 
 public class Differ {
@@ -20,20 +23,9 @@ public class Differ {
         Map<String, Object> fileMapOne = Parser.parseToMap(contentFileOne, formatFile1);
         Map<String, Object> fileMapTwo = Parser.parseToMap(contentFileTwo, formatFile2);
 
-        Map<String, String> resultStringMap = Comparator.getDifference(fileMapOne, fileMapTwo);
+        List<Map<String, Object>> resultStringList = Comparator.getDifference(fileMapOne, fileMapTwo);
 
-        StringBuilder resultString = new StringBuilder("{\n");
-        for (Map.Entry<String, String> resultStrMap : resultStringMap.entrySet()) {
-            resultString
-                    .append(" ")
-                    .append(resultStrMap.getKey())
-                    .append(": ")
-                    .append(resultStrMap.getValue())
-                    .append("\n");
-        }
-        resultString.append("}");
-
-        return resultString.toString();
+        return Formatter.formatToString(resultStringList);
     }
 
     public static Path getPath(String filePath) throws Exception {
