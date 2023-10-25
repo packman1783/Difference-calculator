@@ -11,3 +11,9 @@
 
 **Asciinema "stylish" comparing nested json, nested yml files**  
 [![asciicast](https://asciinema.org/a/616996.svg)](https://asciinema.org/a/616996)
+
+**Asciinema "plain" comparing nested json, yml files**
+[![asciicast](https://asciinema.org/a/617098.svg)](https://asciinema.org/a/617098)
+
+
+
