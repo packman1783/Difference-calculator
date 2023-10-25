@@ -1,10 +1,10 @@
-package hexlet.code.format;
+package hexlet.code.formatters;
 
 import java.util.List;
 import java.util.Map;
 
 public class Stylish {
-    public static String formatStylish(List<Map<String, Object>> diffList) {
+    public static String formatStylish(List<Map<String, Object>> diffList) throws Exception {
         StringBuilder result = new StringBuilder("{\n");
 
         for (Map<String, Object> diff : diffList) {
@@ -19,8 +19,11 @@ public class Stylish {
                     result.append("  - " + diff.get("key") + ": " + diff.get("mapOneValue") + "\n");
                     result.append("  + " + diff.get("key") + ": " + diff.get("mapTwoValue") + "\n");
                 }
-                default -> {
+                case "unchanged" -> {
                     result.append("    " + diff.get("key") + ": " + diff.get("mapOneValue") + "\n");
+                }
+                default -> {
+                    throw new Exception("Status: " + diff.get("status") + " is incorrect!");
                 }
             }
         }
