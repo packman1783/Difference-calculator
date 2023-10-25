@@ -8,3 +8,6 @@
 
 **Asciinema simple comparing .yml files**
 [![asciicast](https://asciinema.org/a/616643.svg)](https://asciinema.org/a/616643)
+
+**Asciinema "stylish" comparing nested json, nested yml files**  
+[![asciicast](https://asciinema.org/a/616996.svg)](https://asciinema.org/a/616996)
