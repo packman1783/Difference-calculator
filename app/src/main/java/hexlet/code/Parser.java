@@ -7,9 +7,9 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 import java.util.Map;
 
 public class Parser {
-    public static Map<String, Object> parseToMap(String contentFile, String fileFormat) throws Exception {
+    public static Map<String, Object> parseToMap(String contentFile, String extensionFile) throws Exception {
 
-        switch (fileFormat) {
+        switch (extensionFile) {
             case "json" -> {
                 ObjectMapper mapper = new ObjectMapper();
                 return mapper.readValue(contentFile, new TypeReference<>() { });
@@ -19,7 +19,7 @@ public class Parser {
                 ObjectMapper mapper = new YAMLMapper();
                 return mapper.readValue(contentFile, new TypeReference<>() { });
             }
-            default -> throw new Exception("Unexpected format: " + fileFormat);
+            default -> throw new Exception("Unexpected format: " + extensionFile);
         }
     }
 }
