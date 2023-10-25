@@ -1,6 +1,12 @@
 package hexlet.code;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Comparator {
     public static List<Map<String, Object>> getDifference(Map<String, Object> mapOne, Map<String, Object> mapTwo) {
@@ -11,7 +17,7 @@ public class Comparator {
 
         for (String key : keys) {
             Map<String, Object> innerMap = new HashMap<>();
-                innerMap.put("key", key);
+            innerMap.put("key", key);
             if (!mapTwo.containsKey(key)) {
                 innerMap.put("mapOneValue", mapOne.get(key));
                 innerMap.put("status", "deleted");
