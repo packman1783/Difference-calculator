@@ -13,6 +13,7 @@ public class DifferTest {
     static String expectedSimpleComparing;
     static String expectedStylish;
     static String expectedPlain;
+    static String expectedJson;
     static String jsonPathFile1;
     static String jsonPathFile2;
     static String ymlPathFile1;
@@ -38,6 +39,7 @@ public class DifferTest {
 
         expectedPlain = getContent("src/test/resources/expectedPlain.txt");
 
+        expectedJson = getContent("src/test/resources/expectedJson.txt");
     }
 
 
@@ -47,13 +49,13 @@ public class DifferTest {
     }
 
     @Test
-    public void testJson() throws Exception {
+    public void testSimpleJson() throws Exception {
         String actual = Differ.generate(jsonPathFile1, jsonPathFile2);
         assertThat(actual).isEqualTo(expectedSimpleComparing);
     }
 
     @Test
-    public void testYml() throws Exception {
+    public void testSimpleYml() throws Exception {
         String actual = Differ.generate(ymlPathFile1, ymlPathFile2);
         assertThat(actual).isEqualTo(expectedSimpleComparing);
     }
@@ -80,5 +82,11 @@ public class DifferTest {
     public void testPlainYml() throws Exception {
         String actual = Differ.generate(ymlTreePathFile1, ymlTreePathFile2, "plain");
         assertThat(actual).isEqualTo(expectedPlain);
+    }
+
+    @Test
+    public void testJson() throws Exception {
+        String actual = Differ.generate(jsonTreePathFile1, jsonTreePathFile2, "json");
+        assertThat(actual).isEqualTo(expectedJson);
     }
 }
