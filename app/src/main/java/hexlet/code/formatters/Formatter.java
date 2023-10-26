@@ -8,6 +8,7 @@ public class Formatter {
         return switch (format) {
             case "stylish" -> Stylish.formatStylish(diffList);
             case "plain" -> Plain.formatPlain(diffList);
+            case "json" -> Json.formatJson(diffList);
             default -> throw new IllegalStateException("Unexpected value: " + format);
         };
     }
