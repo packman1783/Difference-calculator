@@ -10,18 +10,18 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class DifferTest {
-    static String expectedSimpleComparing;
-    static String expectedStylish;
-    static String expectedPlain;
-    static String expectedJson;
-    static String jsonPathFile1;
-    static String jsonPathFile2;
-    static String ymlPathFile1;
-    static String ymlPathFile2;
-    static String jsonTreePathFile1;
-    static String jsonTreePathFile2;
-    static String ymlTreePathFile1;
-    static String ymlTreePathFile2;
+    private static String expectedSimpleComparing;
+    private static String expectedStylish;
+    private static String expectedPlain;
+    private static String expectedJson;
+    private static String jsonPathFile1;
+    private static String jsonPathFile2;
+    private static String ymlPathFile1;
+    private static String ymlPathFile2;
+    private static String jsonTreePathFile1;
+    private static String jsonTreePathFile2;
+    private static String ymlTreePathFile1;
+    private static String ymlTreePathFile2;
 
     @BeforeAll
     public static void beforeAll() throws Exception {
