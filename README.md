@@ -8,7 +8,11 @@ Output support formats: stylish(default), plate.
 [![Test Coverage](https://api.codeclimate.com/v1/badges/a74e4cd2fc529f000cf5/test_coverage)](https://codeclimate.com/github/packman1783/java-project-71/test_coverage)
 
 ### Use:
-app path file1 path file2 format
+app  -f format path file1 path file2, for example:
+```
+$ ./build/install/app/bin/app -f json src/test/resources/fileTree1.json src/test/resources/fileTree2.json 
+
+```
 
 **Asciinema default comparing .json files**
 [![asciicast](https://asciinema.org/a/614631.svg)](https://asciinema.org/a/614631)
