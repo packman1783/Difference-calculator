@@ -8,7 +8,6 @@ import java.util.Map;
 
 public class Parser {
     public static Map<String, Object> parseToMap(String contentFile, String extensionFile) throws Exception {
-
         switch (extensionFile) {
             case "json" -> {
                 ObjectMapper mapper = new ObjectMapper();
