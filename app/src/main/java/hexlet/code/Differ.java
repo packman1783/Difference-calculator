@@ -15,21 +15,12 @@ public class Differ {
     }
 
     public static String generate(String filePathOne, String filePathTwo, String format) throws Exception {
-        String extensionFile1 = getExtension(filePathOne);
-        String extensionFile2 = getExtension(filePathTwo);
+        Map<String, Object> data1 = getData(filePathOne);
+        Map<String, Object> data2 = getData(filePathTwo);
 
-        Path firstFilePath = getPath(filePathOne);
-        Path secondFilePath = getPath(filePathTwo);
+        List<Map<String, Object>> diff = CompareUtil.getDifference(data1, data2);
 
-        String contentFileOne = Files.readString(firstFilePath);
-        String contentFileTwo = Files.readString(secondFilePath);
-
-        Map<String, Object> fileMapOne = Parser.parseToMap(contentFileOne, extensionFile1);
-        Map<String, Object> fileMapTwo = Parser.parseToMap(contentFileTwo, extensionFile2);
-
-        List<Map<String, Object>> resultStringList = Comparator.getDifference(fileMapOne, fileMapTwo);
-
-        return Formatter.formatToString(resultStringList, format);
+        return Formatter.formatToString(diff, format);
     }
 
     public static Path getPath(String filePath) throws IOException {
@@ -37,12 +28,21 @@ public class Differ {
     }
 
     public static String getExtension(String filePath) throws Exception {
-        if (filePath.endsWith(".json")) {
+        String extension = filePath.substring(filePath.lastIndexOf("."));
+        if (extension.equals(".json")) {
             return "json";
-        } else if (filePath.endsWith(".yml")) {
+        } else if (extension.equals(".yml")) {
             return "yml";
         } else {
             throw new Exception("File format " + filePath + " not supported");
         }
     }
+
+    public static Map<String, Object> getData(String filePath) throws Exception {
+        String extension = getExtension(filePath);
+        Path path = getPath(filePath);
+        String content = Files.readString(path);
+        return Parser.parseToMap(content, extension);
+    }
 }
+
