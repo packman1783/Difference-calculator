@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Json {
-    public static String formatJson(List<Map<String, Object>> diffList) throws Exception {
+    public static String format(List<Map<String, Object>> diffList) throws Exception {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.writeValueAsString(diffList);
     }
