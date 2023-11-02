@@ -1,5 +1,7 @@
 package hexlet.code;
 
+import hexlet.code.factory.FileType;
+import hexlet.code.factory.ParserFactory;
 import hexlet.code.formatters.Formatter;
 
 import java.io.IOException;
@@ -8,6 +10,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
+
+import static hexlet.code.factory.FileType.JSON;
+import static hexlet.code.factory.FileType.YML;
 
 public class Differ {
     public static String generate(String filePathOne, String filePathTwo) throws Exception {
@@ -27,22 +32,25 @@ public class Differ {
         return Paths.get(filePath).toAbsolutePath().normalize();
     }
 
-    public static String getExtension(String filePath) throws Exception {
+    public static FileType getExtension(String filePath) throws Exception {
         String extension = filePath.substring(filePath.lastIndexOf("."));
         if (extension.equals(".json")) {
-            return "json";
+            return JSON;
         } else if (extension.equals(".yml")) {
-            return "yml";
+            return YML;
         } else {
             throw new Exception("File format " + filePath + " not supported");
         }
     }
 
     public static Map<String, Object> getData(String filePath) throws Exception {
-        String extension = getExtension(filePath);
+        FileType extension = getExtension(filePath);
         Path path = getPath(filePath);
         String content = Files.readString(path);
-        return Parser.parseToMap(content, extension);
+
+        ParserFactory factory = new ParserFactory();
+
+        return factory.getParser(extension).parseToMap(content);
     }
 }
 
