@@ -1,6 +1,6 @@
 package hexlet.code.factory;
 
-public class ParserFactory {
+public final class ParserFactory {
     public Parser getParser(FileType type) throws Exception {
         Parser parser;
 
