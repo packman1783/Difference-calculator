@@ -9,22 +9,14 @@ public class Stylish {
 
         for (Map<String, Object> diff : diffList) {
             switch (String.valueOf(diff.get("status"))) {
-                case "deleted" -> {
-                    result.append("  - ").append(diff.get("key")).append(": ").append(diff.get("Value1")).append("\n");
-                }
-                case "added" -> {
-                    result.append("  + ").append(diff.get("key")).append(": ").append(diff.get("Value2")).append("\n");
-                }
+                case "deleted" -> result.append(String.format("  - %s: %s\n", diff.get("key"), diff.get("Value1")));
+                case "added" -> result.append(String.format("  + %s: %s\n", diff.get("key"), diff.get("Value2")));
                 case "changed" -> {
-                    result.append("  - ").append(diff.get("key")).append(": ").append(diff.get("Value1")).append("\n");
-                    result.append("  + ").append(diff.get("key")).append(": ").append(diff.get("Value2")).append("\n");
+                    result.append(String.format("  - %s: %s\n", diff.get("key"), diff.get("Value1")));
+                    result.append(String.format("  + %s: %s\n", diff.get("key"), diff.get("Value2")));
                 }
-                case "unchanged" -> {
-                    result.append("    ").append(diff.get("key")).append(": ").append(diff.get("Value1")).append("\n");
-                }
-                default -> {
-                    throw new Exception("Status: " + diff.get("status") + " is incorrect!");
-                }
+                case "unchanged" -> result.append(String.format("    %s: %s\n", diff.get("key"), diff.get("Value1")));
+                default -> throw new Exception("Status: " + diff.get("status") + " is incorrect!");
             }
         }
 

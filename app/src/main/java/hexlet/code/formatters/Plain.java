@@ -12,22 +12,14 @@ public class Plain {
             Object value1 = diff.get("Value1");
             Object value2 = diff.get("Value2");
             switch (String.valueOf(diff.get("status"))) {
-                case "deleted" -> {
-                    result.append("Property " + "'").append(key).append("'").append(" was removed").append("\n");
-                }
-                case "added" -> {
-                    result.append("Property " + "'").append(key).append("'").append(" was added with value: ")
-                            .append(treeValue(value2)).append("\n");
-                }
-                case "changed" -> {
-                    result.append("Property " + "'").append(key).append("'").append(" was updated. From ")
-                            .append(treeValue(value1)).append(" to ").append(treeValue(value2)).append("\n");
-                }
+                case "deleted" -> result.append(String.format("Property '%s' was removed\n", key));
+                case "added" -> result.append(String.format("Property '%s' was added with value: %s\n", key,
+                        treeValue(value2)));
+                case "changed" -> result.append(String.format("Property '%s' was updated. From %s to %s\n", key,
+                        treeValue(value1), treeValue(value2)));
                 case "unchanged" -> {
                 }
-                default -> {
-                    throw new Exception("Status: " + diff.get("status") + " is incorrect!");
-                }
+                default -> throw new Exception("Status: " + diff.get("status") + " is incorrect!");
             }
         }
 
