@@ -1,21 +1,12 @@
 package hexlet.code.factory;
 
 public final class ParserFactory {
-    public Parser getParser(FileType type) throws Exception {
-        Parser parser;
+    public Parser getParser(FileType type) {
 
-        switch (type) {
-            case JSON:
-                parser = new JsonParser();
-                break;
-            case YML:
-                parser = new YmlParser();
-                break;
-            default:
-                throw new Exception("Unexpected type: " + type);
-        }
-
-        return parser;
+        return switch (type) {
+            case JSON -> new JsonParser();
+            case YML -> new YmlParser();
+        };
     }
 }
 
