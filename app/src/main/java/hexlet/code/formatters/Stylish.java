@@ -9,13 +9,13 @@ public class Stylish {
 
         for (Map<String, Object> diff : diffList) {
             switch (String.valueOf(diff.get("status"))) {
-                case "deleted" -> result.append(String.format("  - %s: %s\n", diff.get("key"), diff.get("Value1")));
-                case "added" -> result.append(String.format("  + %s: %s\n", diff.get("key"), diff.get("Value2")));
+                case "deleted" -> result.append(String.format("  - %s: %s\n", diff.get("key"), diff.get("value1")));
+                case "added" -> result.append(String.format("  + %s: %s\n", diff.get("key"), diff.get("value2")));
                 case "changed" -> {
-                    result.append(String.format("  - %s: %s\n", diff.get("key"), diff.get("Value1")));
-                    result.append(String.format("  + %s: %s\n", diff.get("key"), diff.get("Value2")));
+                    result.append(String.format("  - %s: %s\n", diff.get("key"), diff.get("value1")));
+                    result.append(String.format("  + %s: %s\n", diff.get("key"), diff.get("value2")));
                 }
-                case "unchanged" -> result.append(String.format("    %s: %s\n", diff.get("key"), diff.get("Value1")));
+                case "unchanged" -> result.append(String.format("    %s: %s\n", diff.get("key"), diff.get("value1")));
                 default -> throw new Exception("Status: " + diff.get("status") + " is incorrect!");
             }
         }

@@ -19,17 +19,17 @@ public class CompareUtil {
             Map<String, Object> innerMap = new HashMap<>();
             innerMap.put("key", key);
             if (!mapTwo.containsKey(key)) {
-                innerMap.put("Value1", mapOne.get(key));
+                innerMap.put("value1", mapOne.get(key));
                 innerMap.put("status", "deleted");
             } else if (!mapOne.containsKey(key)) {
-                innerMap.put("Value2", mapTwo.get(key));
+                innerMap.put("value2", mapTwo.get(key));
                 innerMap.put("status", "added");
             } else if (!Objects.equals(mapOne.get(key), mapTwo.get(key))) {
-                innerMap.put("Value1", mapOne.get(key));
-                innerMap.put("Value2", mapTwo.get(key));
+                innerMap.put("value1", mapOne.get(key));
+                innerMap.put("value2", mapTwo.get(key));
                 innerMap.put("status", "changed");
             } else {
-                innerMap.put("Value1", mapOne.get(key));
+                innerMap.put("value1", mapOne.get(key));
                 innerMap.put("status", "unchanged");
             }
 

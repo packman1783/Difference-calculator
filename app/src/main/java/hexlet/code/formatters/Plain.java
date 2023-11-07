@@ -9,8 +9,8 @@ public class Plain {
 
         for (Map<String, Object> diff : diffList) {
             Object key = diff.get("key");
-            Object value1 = diff.get("Value1");
-            Object value2 = diff.get("Value2");
+            Object value1 = diff.get("value1");
+            Object value2 = diff.get("value2");
             switch (String.valueOf(diff.get("status"))) {
                 case "deleted" -> result.append(String.format("Property '%s' was removed\n", key));
                 case "added" -> result.append(String.format("Property '%s' was added with value: %s\n", key,
