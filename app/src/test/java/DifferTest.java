@@ -6,10 +6,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 public class DifferTest {
-    static String expectedSimpleComparing;
-    static String expectedStylish;
-    static String expectedPlain;
-    static String expectedJson;
+    private static String expectedSimpleComparing;
+    private static String expectedStylish;
+    private static String expectedPlain;
+    private static String expectedJson;
 
 
     @BeforeAll
@@ -67,20 +67,20 @@ public class DifferTest {
                 Property 'setting2' was updated. From 200 to 300
                 Property 'setting3' was updated. From true to 'none'""";
 
-        expectedJson = "[{\"value1\":[\"a\",\"b\",\"c\"],\"key\":\"chars1\",\"status\":\"unchanged\"},{\"value2" +
-                "\":false,\"value1\":[\"d\",\"e\",\"f\"],\"key\":\"chars2\",\"status\":\"changed\"},{" +
-                "\"value2\":true,\"value1\":false,\"key\":\"checked\",\"status\":\"changed\"},{\"value2" +
-                "\":[\"value1\",\"value2\"],\"value1\":null,\"key\":\"default\",\"status\":\"changed\"},{" +
-                "\"value2\":null,\"value1\":45,\"key\":\"id\",\"status\":\"changed\"},{\"value1\":\"value1" +
-                "\",\"key\":\"key1\",\"status\":\"deleted\"},{\"value2\":\"value2\",\"key\":\"key2\"," +
-                "\"status\":\"added\"},{\"value1\":[1,2,3,4],\"key\":\"numbers1\",\"status\":\"unchanged" +
-                "\"},{\"value2\":[22,33,44,55],\"value1\":[2,3,4,5],\"key\":\"numbers2\",\"status\":" +
-                "\"changed\"},{\"value1\":[3,4,5],\"key\":\"numbers3\",\"status\":\"deleted\"},{\"value2" +
-                "\":[4,5,6],\"key\":\"numbers4\",\"status\":\"added\"},{\"value2\":{\"nestedKey\":\"value\"," +
-                "\"isNested\":true},\"key\":\"obj1\",\"status\":\"added\"},{\"value2\":\"Another value\",\"value1" +
-                "\":\"Some value\",\"key\":\"setting1\",\"status\":\"changed\"},{\"value2\":300,\"value1\":200,\"key" +
-                "\":\"setting2\",\"status\":\"changed\"},{\"value2\":\"none\",\"value1\":true,\"key\":\"setting3\"," +
-                "\"status\":\"changed\"}]";
+        expectedJson = "[{\"value1\":[\"a\",\"b\",\"c\"],\"key\":\"chars1\",\"status\":\"unchanged\"},{\"value2"
+                 + "\":false,\"value1\":[\"d\",\"e\",\"f\"],\"key\":\"chars2\",\"status\":\"changed\"},{"
+                 + "\"value2\":true,\"value1\":false,\"key\":\"checked\",\"status\":\"changed\"},{\"value2"
+                 + "\":[\"value1\",\"value2\"],\"value1\":null,\"key\":\"default\",\"status\":\"changed\"},{"
+                 + "\"value2\":null,\"value1\":45,\"key\":\"id\",\"status\":\"changed\"},{\"value1\":\"value1"
+                 + "\",\"key\":\"key1\",\"status\":\"deleted\"},{\"value2\":\"value2\",\"key\":\"key2\","
+                 + "\"status\":\"added\"},{\"value1\":[1,2,3,4],\"key\":\"numbers1\",\"status\":\"unchanged"
+                 + "\"},{\"value2\":[22,33,44,55],\"value1\":[2,3,4,5],\"key\":\"numbers2\",\"status\":"
+                 + "\"changed\"},{\"value1\":[3,4,5],\"key\":\"numbers3\",\"status\":\"deleted\"},{\"value2"
+                 + "\":[4,5,6],\"key\":\"numbers4\",\"status\":\"added\"},{\"value2\":{\"nestedKey\":\"value\","
+                 + "\"isNested\":true},\"key\":\"obj1\",\"status\":\"added\"},{\"value2\":\"Another value\",\"value1"
+                 + "\":\"Some value\",\"key\":\"setting1\",\"status\":\"changed\"},{\"value2\":300,\"value1\":200,\"key"
+                 + "\":\"setting2\",\"status\":\"changed\"},{\"value2\":\"none\",\"value1\":true,\"key\":\"setting3\","
+                 + "\"status\":\"changed\"}]";
     }
 
     @Test
