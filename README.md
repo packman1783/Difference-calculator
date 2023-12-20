@@ -8,7 +8,13 @@ Application find difference between two json, yml files.
 Output support formats: stylish(default), plate.
 
 ### Use:
-app  -f format path file1 path file2, for example:
+The difference between files can be displayed in different ways:
+ * format plain:    
+./app --format plain path/to/file.yml another/path/file.json
+ * format stylish:    
+./app filepath1.json filepath2.json
+
+ for example:
 ```
 $ ./build/install/app/bin/app -f json src/test/resources/fileTree1.json src/test/resources/fileTree2.json 
 
